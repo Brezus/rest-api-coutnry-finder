@@ -1,12 +1,44 @@
+:root {
+  --Dark--Blue: hsl(209, 23%, 22%);
+  --Very--Dark--Blue: hsl(207, 26%, 17%);
+  --Very--Dark--Blue: hsl(200, 15%, 8%);
+  --Dark--Gray: hsl(0, 0%, 52%);
+  --Very--Light--Gray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --fs: .875rem;
+  --fsl: 1rem;
+  --ff:'Nunito Sans', sans-serif;
+  --fws: 300;
+  --fwm: 600;
+  --fwl: 800;
+}
+body {
+  font-family: var(--ff);
+  background-color: var(--Very--Light--Gray);
+}
 .App {
   text-align: center;
 }
+/* ======================= typography ======================= */
+.country-grid-item__text h2 {
+  margin-bottom: .9em;
+  font-size: 2.1rem;
+  font-weight: var(--fwl);
+}
+.country-grid-item__text p {
+  font-size: 1.7rem;
+  font-weight: var(--fwm);
+  margin-bottom: .25em;
+
+}
 .country-grid-item{
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  width: 80%;
+  grid-template-rows: repeat(2, 21rem);
+  width: 70.5%;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 9px;
+  background-color: white;
+  overflow: hidden;
 }
 .country-grid-item__flag{
   grid-row: 1;
@@ -15,4 +47,6 @@
 }
 .country-grid-item__text {
   grid-row: 2;
+  text-align: left;
+  padding: 2.1em 0 0 3.2em;
 }

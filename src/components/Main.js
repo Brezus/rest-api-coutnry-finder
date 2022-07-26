@@ -8,7 +8,7 @@ const MainCont = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2em;
+    gap: 5em;
 `
 
 const url = 'https://restcountries.com/v3.1/all'
