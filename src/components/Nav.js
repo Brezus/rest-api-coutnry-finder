@@ -7,12 +7,16 @@ import styled from 'styled-components'
 
 const NavCont = styled.nav`
     width: 100%;
-    padding: 3.5rem 0;
+    padding: 3.6rem 0 3.5rem;
     background-color: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    h1 {
+        font-size: 1.9rem;
+      }
 `
 const Div = styled.div`
-    width: 90%;
+    width: 92%;
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
@@ -30,7 +34,7 @@ export default function Nav() {
     return (
         <NavCont>
             <Div>
-                <h1 className="nav-title">Where in the world?</h1>
+                <h1>Where in the world?</h1>
                 {themeDiv}
             </Div>
         </NavCont>

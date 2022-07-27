@@ -1,14 +1,15 @@
 import React from "react";
 
 export default function CountryGridItem({data}) {
+    const {allData, visible} = data
    return (
-        <div className="country-grid-item">
-            <div className="country-grid-item__flag" style={{backgroundImage: `url(${data.flags.png})`}}></div>
+        <div className="country-grid-item" style={{display: `${!visible && 'none'}`}}>
+            <div className="country-grid-item__flag" style={{backgroundImage: `url(${allData.flags.png})`}}></div>
             <div className="country-grid-item__text">
-                <h2>{data.name.common}</h2>
-                <p>{`Population: ${data.population.toLocaleString()}`}</p>
-                <p>{`Region: ${data.region}`}</p>
-                <p>{`Capital: ${data.capital}`}</p>
+                <h2>{allData.name.common}</h2>
+                <p>{`Population: ${allData.population.toLocaleString()}`}</p>
+                <p>{`Region: ${allData.region}`}</p>
+                <p>{`Capital: ${allData.capital}`}</p>
             </div>
         </div>
    )
