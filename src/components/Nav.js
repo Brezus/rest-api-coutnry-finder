@@ -8,7 +8,8 @@ import styled from 'styled-components'
 const NavCont = styled.nav`
     width: 100%;
     padding: 3.5rem 0;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `
 const Div = styled.div`
     width: 90%;
@@ -25,7 +26,7 @@ const ThemeCont = styled.div`
 
 export default function Nav() {
     const [darkmode, setDarkmode] = useToggle(false)
-    const themeDiv = <ThemeCont><FontAwesomeIcon onClick={setDarkmode} icon={darkmode ? faSun : faMoon} /><p>Dark Mode</p></ThemeCont>
+    const themeDiv = <ThemeCont><FontAwesomeIcon onClick={setDarkmode} icon={darkmode ? faSun : faMoon} /><p className="nav-para">Dark Mode</p></ThemeCont>
     return (
         <NavCont>
             <Div>

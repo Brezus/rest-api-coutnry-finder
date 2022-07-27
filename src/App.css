@@ -20,10 +20,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3em;
+  background-color: var(--Very--Light--Gray);
 }
 /* ======================= typography ======================= */
 .nav-title {
   font-size: 1.7rem;
+}
+.nav-para {
+  font-size: .9rem;
 }
 .country-grid-item__text h2 {
   margin-bottom: .9em;

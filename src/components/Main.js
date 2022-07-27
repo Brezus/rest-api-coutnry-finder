@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import InputFilter from "./InputFilter";
 
 const WrapperDiv = styled.div`
-    background-color: hsl(0, 0%, 98%);
 ` 
 
 

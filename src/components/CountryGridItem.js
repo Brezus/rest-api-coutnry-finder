@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function CountryGridItem({data}) {
-    console.log(data)
    return (
         <div className="country-grid-item">
             <div className="country-grid-item__flag" style={{backgroundImage: `url(${data.flags.png})`}}></div>
