@@ -9,7 +9,7 @@ const HeaderCont = styled.header`
     gap: 5em;
     width: 90%;
     margin-inline: auto;
-    padding: 3rem 0 4rem 0;
+    padding: 0rem 0 4rem 0;
 `
 
 const InputCont = styled.div`
