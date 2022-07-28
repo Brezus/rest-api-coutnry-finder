@@ -18,6 +18,10 @@ const HeaderCont = styled.header`
 
 const InputCont = styled.div`
     position: relative;
+
+    i {
+        font-size: 3rem;
+    }
 `
 const InputBox = styled.input`
     padding: 2.3em;
@@ -33,7 +37,10 @@ const InputBox = styled.input`
         opacity: .7;
         font-size: 1.5rem;
         font-weight: 600;
+        color: ${({theme}) => theme.text}
     }
+    background-color: ${({theme}) => theme.background};
+
 
 `
 const FilterCont = styled.div`
@@ -50,7 +57,7 @@ const FilterBox = styled.div`
     padding: 2em 3.1em;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 0;
-    background: white;
+    background: ${({theme}) => theme.background};
 
     p {
         text-align: left;
@@ -73,7 +80,7 @@ const DropDownBox = styled.div`
     opacity: ${props => props.open ? '1' : '0'};
     transition: width 0.2s ease;
     overflow: hidden;
-    background-color: white;
+    background-color: ${({theme}) => theme.background};
     border-radius: 8px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
