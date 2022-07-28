@@ -7,7 +7,13 @@ import { lightTheme, darkTheme } from "./components/Themes"
 import {useState} from 'react'
 import styled from 'styled-components'
 import useToggle from "./hooks/useToggle";
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import CountryDetails from './components/CountryDetails';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -23,16 +29,31 @@ function App() {
     gap: 3em;
     background-color: ${({theme}) => theme.background};
   `
+
+  const routes = [
+    {
+      path: '/',
+      component: Main
+    },
+    {
+      path: '/:countryName',
+      component: CountryDetails
+    }
+  ]
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-      <GlobalStyles/>
-        <App>
-          <Nav toggleTheme={themeToggler} theme={theme} darkmode={darkmode}/>
-          <Main />
-        </App>
-      </>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles/>
+            <App>
+              <Nav toggleTheme={themeToggler} theme={theme} darkmode={darkmode}/>
+              <Switch>
+              {routes.map((route, i) => (
+                <RouteWithSubRoutes key={i} {...route} />
+              ))}
+              </Switch>
+            </App>
+      </ThemeProvider>
+    </Router>
     
   );
 }

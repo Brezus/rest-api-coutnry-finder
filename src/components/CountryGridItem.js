@@ -1,12 +1,11 @@
 import React from "react";
 import styled from 'styled-components'
-
+import {Link} from 'react-router-dom'
 
 const DivWrapper = styled.div`
     display: grid;
     grid-template-rows: repeat(2, 21rem);
     width: 71%;
-    cursor: pointer;
     border-radius: 9px;
     background-color: ${({theme}) => theme.background};
     overflow: hidden;
@@ -35,21 +34,30 @@ const DivWrapper = styled.div`
         background-color: ${({theme}) => theme.background};
       }
 `
- 
-  
 
 export default function CountryGridItem({data}) {
     const {allData, visible} = data
     console.log(allData)
+    const linkStyles = {
+        width: '100%',
+        marginInline: 'auto',
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        display: `${!visible ? 'none' : 'flex'}`
+    }
    return (
-        <DivWrapper  style={{display: `${!visible && 'none'}`}}>
-            <div className="country-grid-item__flag" style={{backgroundImage: `url(${allData.flags.png})`}}></div>
-            <div className="country-grid-item__text">
-                <h2>{allData.name.common}</h2>
-                <p>{`Population: ${allData.population.toLocaleString()}`}</p>
-                <p>{`Region: ${allData.region}`}</p>
-                <p>{`Capital: ${allData.capital}`}</p>
-            </div>
-        </DivWrapper>
+        <Link to={`/${allData.name.common.toLowerCase()}`} style={linkStyles}>
+            <DivWrapper>
+                <div className="country-grid-item__flag" style={{backgroundImage: `url(${allData.flags.png})`}}></div>
+                <div className="country-grid-item__text">
+                    <h2>{allData.name.common}</h2>
+                    <p>{`Population: ${allData.population.toLocaleString()}`}</p>
+                    <p>{`Region: ${allData.region}`}</p>
+                    <p>{`Capital: ${allData.capital}`}</p>
+                </div>
+            </DivWrapper>
+        </Link>
+
    )
 }
+

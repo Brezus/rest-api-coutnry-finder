@@ -5,6 +5,7 @@ import CountryGridItem from "./CountryGridItem";
 import styled from 'styled-components'
 import InputFilter from "./InputFilter";
 
+
 const MainCont = styled.main`
     display: flex;
     flex-direction: column;
@@ -15,9 +16,6 @@ const url = 'https://restcountries.com/v3.1/all'
 
 export default function Main() {
     const [fetchedData, setFetchedData] = useState([])
-    // const backupData = fetchedData.map(item => {
-    //     return {allData: item, region: item.region, name: item.name.common, population: item.population, capital: item.capital }
-    // })
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
