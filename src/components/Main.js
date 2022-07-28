@@ -31,16 +31,26 @@ export default function Main() {
       function handleRegionChange(str) {
           setFetchedData(prevData => {
             return prevData.map(data => {
-                return data.allData.region == str ? {...data, visible: true} : {...data, visible: false}
+                return data.allData.region === str ? {...data, visible: true} : {...data, visible: false}
             })
             })
+      }
+
+      function handleInput(e) {
+        const search = e.target.value.toLowerCase()
+        setFetchedData(prevData => {
+            return prevData.map(data => {
+                const commonName = data.allData.name.common.toLowerCase()
+                return commonName.includes(search) ? {...data, visible: true} : {...data, visible: false}
+            })
+        })
       }
 
       const gridDataComponents = fetchedData.map(item => <CountryGridItem data={item} key={nanoid()} />)
 
     return(
         <div>
-            <InputFilter handleClick={handleRegionChange}/>
+            <InputFilter handleClick={handleRegionChange} handleInput={handleInput}/>
             <MainCont>{gridDataComponents}</MainCont>
         </div>
         )

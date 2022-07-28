@@ -103,7 +103,7 @@ const ArrowButton = styled(Button)`
     padding: .3em;
 `
 
-export default function InputFilter({handleClick}) {
+export default function InputFilter({handleClick, handleInput}) {
     const [open, setOpen] = useToggle(false)
 
     function handleFilterChange(e) {
@@ -121,7 +121,9 @@ export default function InputFilter({handleClick}) {
     return (
         <HeaderCont>
                 <InputCont>
-                    <InputBox placeholder="Search for a country..."></InputBox>
+                    <InputBox placeholder="Search for a country..." onChange={(e) => {
+                        handleInput(e)
+                    }}></InputBox>
                     <Button><FontAwesomeIcon style={{fontSize: '2rem'}} icon={faMagnifyingGlass}/></Button>
                 </InputCont>
                 <FilterCont>
