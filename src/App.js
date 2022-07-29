@@ -29,17 +29,6 @@ function App() {
     gap: 3em;
     background-color: ${({theme}) => theme.background};
   `
-
-  const routes = [
-    {
-      path: '/',
-      component: Main
-    },
-    {
-      path: '/:countryName',
-      component: CountryDetails
-    }
-  ]
   return (
     <Router>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -47,9 +36,12 @@ function App() {
             <App>
               <Nav toggleTheme={themeToggler} theme={theme} darkmode={darkmode}/>
               <Switch>
-              {routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route} />
-              ))}
+                <Route exact path='/'>
+                  <Main />
+                </Route>
+                <Route path='/:countryName'>
+                  <CountryDetails/>
+                </Route>
               </Switch>
             </App>
       </ThemeProvider>

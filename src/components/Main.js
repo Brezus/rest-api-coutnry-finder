@@ -4,6 +4,10 @@ import { nanoid } from 'nanoid'
 import CountryGridItem from "./CountryGridItem";
 import styled from 'styled-components'
 import InputFilter from "./InputFilter";
+import {
+    Switch,
+    Route,
+  } from "react-router-dom";
 
 
 const MainCont = styled.main`
@@ -11,6 +15,7 @@ const MainCont = styled.main`
     flex-direction: column;
     align-items: center;
     gap: 5em;
+    background: ${({theme}) => theme.background}
 `
 const url = 'https://restcountries.com/v3.1/all'
 

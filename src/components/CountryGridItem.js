@@ -7,6 +7,7 @@ const DivWrapper = styled.div`
     grid-template-rows: repeat(2, 21rem);
     width: 71%;
     border-radius: 9px;
+    color: ${({theme}) => theme.text};
     background-color: ${({theme}) => theme.background};
     overflow: hidden;
   
@@ -31,19 +32,18 @@ const DivWrapper = styled.div`
         grid-row: 2;
         text-align: left;
         padding: 2.1em 0 0 3.2em;
-        background-color: ${({theme}) => theme.background};
+        background-color: ${({theme}) => theme.body};
       }
 `
 
 export default function CountryGridItem({data}) {
     const {allData, visible} = data
-    console.log(allData)
     const linkStyles = {
         width: '100%',
         marginInline: 'auto',
         justifyContent: 'center',
-        backgroundColor: 'white',
-        display: `${!visible ? 'none' : 'flex'}`
+        display: `${!visible ? 'none' : 'flex'}`,
+        textDecoration: 'none'
     }
    return (
         <Link to={`/${allData.name.common.toLowerCase()}`} style={linkStyles}>
@@ -57,7 +57,7 @@ export default function CountryGridItem({data}) {
                 </div>
             </DivWrapper>
         </Link>
-
+        
    )
 }
 
