@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 const DivWrapper = styled.div`
     display: grid;
     grid-template-rows: repeat(2, 21rem);
-    width: 71%;
+    width: 100%;
     border-radius: 9px;
     color: ${({theme}) => theme.text};
     background-color: ${({theme}) => theme.background};
@@ -39,14 +39,18 @@ const DivWrapper = styled.div`
 export default function CountryGridItem({data}) {
     const {allData, visible} = data
     const linkStyles = {
-        width: '100%',
+        width: '71%',
         marginInline: 'auto',
         justifyContent: 'center',
         display: `${!visible ? 'none' : 'flex'}`,
         textDecoration: 'none'
     }
+    const gridItemParams = {
+      pathname: `/${allData.name.common.toLowerCase()}`, 
+      state: {countriesInfo: allData}
+    }
    return (
-        <Link to={`/${allData.name.common.toLowerCase()}`} style={linkStyles}>
+        <Link to={gridItemParams} style={linkStyles}>
             <DivWrapper>
                 <div className="country-grid-item__flag" style={{backgroundImage: `url(${allData.flags.png})`}}></div>
                 <div className="country-grid-item__text">

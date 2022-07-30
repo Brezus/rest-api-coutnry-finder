@@ -16,6 +16,10 @@ const MainCont = styled.main`
     align-items: center;
     gap: 5em;
     background: ${({theme}) => theme.background}
+    
+    @media (min-width: 800px) {
+        display: none;
+    }
 `
 const url = 'https://restcountries.com/v3.1/all'
 
@@ -49,7 +53,7 @@ export default function Main() {
         })
       }
 
-      const gridDataComponents = fetchedData.map(item => <CountryGridItem data={item} key={nanoid()} />)
+      const gridDataComponents = fetchedData && fetchedData.map(item => <CountryGridItem data={item} key={nanoid()} />)
 
     return(
         <div>
