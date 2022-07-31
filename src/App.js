@@ -11,7 +11,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import CountryDetails from './components/CountryDetails';
 
@@ -22,7 +21,7 @@ function App() {
     theme === 'light' ? setTheme('dark') : setTheme('light')
     theme === 'light' ? setDarkmode(false) : setDarkmode(true)
   }
-  const App = styled.div`
+  const AppCont = styled.div`
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -33,7 +32,7 @@ function App() {
     <Router>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <GlobalStyles/>
-            <App>
+            <AppCont>
               <Nav toggleTheme={themeToggler} theme={theme} darkmode={darkmode}/>
               <Switch>
                 <Route exact path='/'>
@@ -43,7 +42,7 @@ function App() {
                   <CountryDetails/>
                 </Route>
               </Switch>
-            </App>
+            </AppCont>
       </ThemeProvider>
     </Router>
     

@@ -1,29 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
 import { nanoid } from 'nanoid'
 import CountryGridItem from "./CountryGridItem";
 import styled from 'styled-components'
 import InputFilter from "./InputFilter";
-import {
-    Switch,
-    Route,
-  } from "react-router-dom";
-
+import useWindowSize from '../hooks/useWindowSize'
 
 const MainCont = styled.main`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5em;
     background: ${({theme}) => theme.background}
-    
-    @media (min-width: 800px) {
-        display: none;
-    }
 `
 const url = 'https://restcountries.com/v3.1/all'
 
 export default function Main() {
+    const {width} = useWindowSize()
     const [fetchedData, setFetchedData] = useState([])
     useEffect(() => {
         fetch(url)
@@ -58,7 +46,7 @@ export default function Main() {
     return(
         <div>
             <InputFilter handleClick={handleRegionChange} handleInput={handleInput}/>
-            <MainCont>{gridDataComponents}</MainCont>
+            <MainCont className="main-cont">{gridDataComponents}</MainCont>
         </div>
         )
 }

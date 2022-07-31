@@ -39,7 +39,7 @@ const DivWrapper = styled.div`
 export default function CountryGridItem({data}) {
     const {allData, visible} = data
     const linkStyles = {
-        width: '71%',
+        width: '100%',
         marginInline: 'auto',
         justifyContent: 'center',
         display: `${!visible ? 'none' : 'flex'}`,

@@ -1,10 +1,67 @@
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components'
+
+
+const ArticleCont = styled.article`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: ${({theme}) => theme.body};
+    width: 92%;
+    margin-inline: auto;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        color: ${({theme}) => theme.text};
+        background-color: ${({theme}) => theme.background};
+    }
+`
+
 
 export default function CountryDetails(props) {
-    const {countryName} = useParams()
     const countriesData = useLocation()
     const {countriesInfo} = countriesData.state
     console.log(countriesInfo)
-    return(<p>hello there we are at {countryName}</p>)
+    const flagDpStyles = {
+        backgroundImage: `url(${countriesInfo.flags.svg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '300px',
+        width: '300px'
+    }
+    let nativeName = ''
+    if (countriesInfo.name.nativeName.kal) {
+        nativeName = countriesInfo.name.nativeName.kal.official
+    } else if (countriesInfo.name.nativeName.spa) {
+        nativeName = countriesInfo.name.nativeName.spa.official
+    } else if (countriesInfo.name.nativeName.kat) {
+        nativeName = countriesInfo.name.nativeName.kat.official
+    }
+    console.log(nativeName)
+    return(
+        <ArticleCont>
+            <button><FontAwesomeIcon icon={faArrowLeftLong} /> Back</button>
+            <div style={flagDpStyles}></div>
+            <div>
+                <h2>{countriesInfo.name.common}</h2>
+                <ul>
+                    <li>Native Name: {nativeName}</li>
+                    <li>Population: {countriesInfo.population.toString()}</li>
+                    <li>Region: {countriesInfo.region}</li>
+                    <li>Sub Region: {countriesInfo.subregion}</li>
+                    <li>Capital: {countriesInfo.capital}</li>
+                </ul>
+                <ul>
+                    <li>Top Level Domain: {countriesInfo.region}</li>
+                    <li>Currencies: {countriesInfo.subregion}</li>
+                    <li>Languages: {countriesInfo.capital}</li>
+                </ul>
+            </div>
+        </ArticleCont>
+    )
 }
