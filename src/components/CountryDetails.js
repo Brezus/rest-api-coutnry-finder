@@ -20,19 +20,42 @@ const ArticleCont = styled.article`
         color: ${({theme}) => theme.text};
         background-color: ${({theme}) => theme.background};
     }
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        align-self: start;
+    }
+    ul {
+        list-style: none;
+        text-align: left;
+        padding-left: 0;
+    }
 `
+
+
 
 
 export default function CountryDetails(props) {
     const countriesData = useLocation()
     const {countriesInfo} = countriesData.state
     console.log(countriesInfo)
+    const borderLinks = countriesInfo.borders.map(border => <button>{border}</button>)
+    let currency = null
+    for (let key in countriesInfo.currencies) {
+        if (Object.prototype.hasOwnProperty.call(countriesInfo.currencies, key)) {
+            var val = countriesInfo.currencies[key];
+            const currencyInfo = Object.values(val)
+            currency = currencyInfo[0]
+        }
+    }
+    const languages = Object.values(countriesInfo.languages).join(', ')
     const flagDpStyles = {
         backgroundImage: `url(${countriesInfo.flags.svg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '300px',
-        width: '300px'
+        width: '100%'
     }
     let nativeName = ''
     if (countriesInfo.name.nativeName.kal) {
@@ -42,12 +65,11 @@ export default function CountryDetails(props) {
     } else if (countriesInfo.name.nativeName.kat) {
         nativeName = countriesInfo.name.nativeName.kat.official
     }
-    console.log(nativeName)
     return(
         <ArticleCont>
             <button><FontAwesomeIcon icon={faArrowLeftLong} /> Back</button>
             <div style={flagDpStyles}></div>
-            <div>
+            <main>
                 <h2>{countriesInfo.name.common}</h2>
                 <ul>
                     <li>Native Name: {nativeName}</li>
@@ -57,11 +79,15 @@ export default function CountryDetails(props) {
                     <li>Capital: {countriesInfo.capital}</li>
                 </ul>
                 <ul>
-                    <li>Top Level Domain: {countriesInfo.region}</li>
-                    <li>Currencies: {countriesInfo.subregion}</li>
-                    <li>Languages: {countriesInfo.capital}</li>
+                    <li>Top Level Domain: {countriesInfo.tld[0]}</li>
+                    <li>Currencies: {currency}</li>
+                    <li>Languages: {languages}</li>
                 </ul>
-            </div>
+                <h2>Border Countries:</h2>
+                <div style={{display: 'flex'}}>
+                    {borderLinks}
+                </div>
+            </main>
         </ArticleCont>
     )
 }
