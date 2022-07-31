@@ -40,7 +40,7 @@ export default function CountryDetails(props) {
     const countriesData = useLocation()
     const {countriesInfo} = countriesData.state
     console.log(countriesInfo)
-    const borderLinks = countriesInfo.borders.map(border => <button>{border}</button>)
+    const borderLinks = countriesInfo.borders?.map(border => <button>{border}</button>)
     let currency = null
     for (let key in countriesInfo.currencies) {
         if (Object.prototype.hasOwnProperty.call(countriesInfo.currencies, key)) {
@@ -64,6 +64,8 @@ export default function CountryDetails(props) {
         nativeName = countriesInfo.name.nativeName.spa.official
     } else if (countriesInfo.name.nativeName.kat) {
         nativeName = countriesInfo.name.nativeName.kat.official
+    } else {
+        nativeName = countriesInfo.name.common
     }
     return(
         <ArticleCont>
@@ -85,7 +87,7 @@ export default function CountryDetails(props) {
                 </ul>
                 <h2>Border Countries:</h2>
                 <div style={{display: 'flex'}}>
-                    {borderLinks}
+                    {borderLinks ? borderLinks : 'No borders'}
                 </div>
             </main>
         </ArticleCont>

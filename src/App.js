@@ -14,6 +14,15 @@ import {
 } from "react-router-dom";
 import CountryDetails from './components/CountryDetails';
 
+
+const AppCont = styled.div`
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    background-color: ${({theme}) => theme.background};
+  ` 
+  
 function App() {
   const [theme, setTheme] = useState('light');
   const [darkmode, setDarkmode] = useToggle(false)
@@ -21,13 +30,7 @@ function App() {
     theme === 'light' ? setTheme('dark') : setTheme('light')
     theme === 'light' ? setDarkmode(false) : setDarkmode(true)
   }
-  const AppCont = styled.div`
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 3em;
-    background-color: ${({theme}) => theme.background};
-  `
+  
   return (
     <Router>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
