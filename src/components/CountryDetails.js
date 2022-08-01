@@ -40,7 +40,7 @@ export default function CountryDetails(props) {
     const countriesData = useLocation()
     const {countriesInfo} = countriesData.state
     console.log(countriesInfo)
-    const borderLinks = countriesInfo.borders?.map(border => <button>{border}</button>)
+    const borderLinks = countriesInfo.borders?.map((border, i) => <button key={i}>{border}</button>)
     let currency = null
     for (let key in countriesInfo.currencies) {
         if (Object.prototype.hasOwnProperty.call(countriesInfo.currencies, key)) {

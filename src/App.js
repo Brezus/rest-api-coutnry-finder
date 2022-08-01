@@ -2,9 +2,7 @@ import './App.css';
 import Nav from './components/Nav'
 import Main from './components/Main'
 import {ThemeProvider} from "styled-components";
-import { GlobalStyles } from "./components/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/Themes"
-import {useState} from 'react'
 import styled from 'styled-components'
 import useToggle from "./hooks/useToggle";
 import {
@@ -13,6 +11,7 @@ import {
   Route,
 } from "react-router-dom";
 import CountryDetails from './components/CountryDetails';
+import { useEffect } from 'react';
 
 
 const AppCont = styled.div`
@@ -24,19 +23,17 @@ const AppCont = styled.div`
   ` 
   
 function App() {
-  const [theme, setTheme] = useState('light');
-  const [darkmode, setDarkmode] = useToggle(false)
-  function themeToggler() {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-    theme === 'light' ? setDarkmode(false) : setDarkmode(true)
-  }
-  
+  const [darkMode, toggleDarkMode] = useToggle(JSON.parse(localStorage.getItem('theme')) || false)
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(darkMode))
+  }, [darkMode])
+
   return (
     <Router>
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <GlobalStyles/>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
             <AppCont>
-              <Nav toggleTheme={themeToggler} theme={theme} darkmode={darkmode}/>
+              <Nav toggleTheme={toggleDarkMode} darkMode={darkMode}/>
               <Switch>
                 <Route exact path='/'>
                   <Main />

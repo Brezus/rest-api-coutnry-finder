@@ -29,8 +29,8 @@ const ThemeCont = styled.div`
     align-items: center;
 `
 
-export default function Nav({toggleTheme, theme, darkmode}) {
-    const themeDiv = <ThemeCont><FontAwesomeIcon onClick={toggleTheme} icon={darkmode ? faSun : faMoon} /><p className="nav-para">Dark Mode</p></ThemeCont>
+export default function Nav({toggleTheme, darkMode}) {
+    const themeDiv = <ThemeCont><FontAwesomeIcon onClick={toggleTheme} icon={darkMode ? faSun : faMoon} /><p className="nav-para">Dark Mode</p></ThemeCont>
     return (
         <NavCont>
             <Div>
