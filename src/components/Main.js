@@ -11,7 +11,7 @@ const MainCont = styled.main`
 const LoaderDiv = styled.div`
     height: 100vh;
     width: 100vw;
-    background-image: url(https://media4.giphy.com/media/eK7Nj68Yur6vRmVyqN/giphy.gif?cid=ecf05e4727jj6t2gdbjhfx7e0toy9j2aktwbuejpqjz9ovsy&rid=giphy.gif&ct=s);
+    background-image: url(https://media1.giphy.com/media/itPPg72momesJtM1PZ/giphy.gif?cid=ecf05e47q1ysk5cvo0fkili8oa6th1idkrxl1337wvemnw2n&rid=giphy.gif&ct=s);
     background-size: 30%;
     background-repeat: no-repeat;
     background-position: top;

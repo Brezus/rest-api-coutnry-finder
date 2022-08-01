@@ -47,7 +47,7 @@ export default function CountryGridItem({data}) {
     }
     const gridItemParams = {
       pathname: `/${allData.name.common.toLowerCase()}`, 
-      state: {countriesInfo: allData}
+      state: {countriesInfo: allData},
     }
    return (
         <Link to={gridItemParams} style={linkStyles}>
