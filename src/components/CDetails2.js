@@ -38,7 +38,7 @@ const ArticleCont = styled.article`
 
 
 export default function CDetails2() {
-    const [cData, setCData] = useState([])
+    const [cData, setCData] = useState({})
     const {countryCode} = useParams()
 
     useEffect(() => {
@@ -50,7 +50,7 @@ export default function CDetails2() {
     
     }, [])
 
-    const borders = cData.borders && cData.borders.map((border, i) => <Link key={i} to={`/${border}`}>{border}</Link>)
+    const borders = cData.borders?.map((border, i) => <Link key={i} to={`/${border}`}>{border}</Link>)
     const languages = cData.languages && Object.values(cData.languages).join(', ')
     const currency = cData.currencies && Object.values(cData.currencies)[0].name
     const flagDpStyles = {
@@ -62,8 +62,8 @@ export default function CDetails2() {
     }
 
     const nativeName = cData.name && Object.values(cData.name.nativeName)[0].official
-    const population = cData.population && cData.population.toString()
-    const topLevelDomain = cData.tld && cData.tld[0]
+    const population = cData.population?.toString()
+    const topLevelDomain = cData.tld?.[0]
     return(
         <ArticleCont>
             
