@@ -46,11 +46,11 @@ export default function CountryGridItem({data}) {
         textDecoration: 'none'
     }
     const gridItemParams = {
-      pathname: `/${allData.name.common.toLowerCase()}`, 
+      pathname: `/${allData.cca3}`, 
       state: {countriesInfo: allData},
     }
    return (
-        <Link to={gridItemParams} style={linkStyles}>
+        <Link to={`/${allData.cca3}`} style={linkStyles}>
             <DivWrapper>
                 <div className="country-grid-item__flag" style={{backgroundImage: `url(${allData.flags.png})`}}></div>
                 <div className="country-grid-item__text">

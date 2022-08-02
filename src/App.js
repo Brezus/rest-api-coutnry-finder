@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import CountryDetails from './components/CountryDetails';
 import { useEffect } from 'react';
+import CDetails2 from './components/CDetails2';
 
 
 const AppCont = styled.div`
@@ -38,8 +39,11 @@ function App() {
                 <Route exact path='/'>
                   <Main />
                 </Route>
-                <Route path='/:countryName'>
+                <Route exact path='/:countryName'>
                   <CountryDetails/>
+                </Route>
+                <Route path='/border-country/:countryCode'>
+                  <CDetails2/>
                 </Route>
               </Switch>
             </AppCont>
