@@ -32,7 +32,7 @@ const InputBox = styled.input`
     border: none;
     padding-left: 9.4rem;
     padding-top: 2.4rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: ${({theme}) => theme.boxShadow};
     ::placeholder {
         opacity: .7;
         font-size: 1.5rem;
