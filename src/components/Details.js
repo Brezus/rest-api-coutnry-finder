@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
+import BackButton from "./BackButton";
 
 const ArticleCont = styled.article`
     display: flex;
@@ -12,13 +11,6 @@ const ArticleCont = styled.article`
     width: 92%;
     margin-inline: auto;
 
-    button {
-        display: flex;
-        align-items: center;
-        gap: .5em;
-        color: ${({theme}) => theme.text};
-        background-color: ${({theme}) => theme.background};
-    }
     main {
         display: flex;
         flex-direction: column;
@@ -49,7 +41,7 @@ export default function Details({info, borderC}) {
     }
     return (
         <ArticleCont>
-            <button><FontAwesomeIcon icon={faArrowLeftLong} /> Back</button>
+            <BackButton />
             <div style={flagDpStyles}></div>
             <main>
                 <h2>{info.name?.common}</h2>
