@@ -40,13 +40,14 @@ const InputBox = styled.input`
         color: ${({theme}) => theme.text}
     }
     background-color: ${({theme}) => theme.background};
-
+    color: ${({theme}) => theme.text};
 
 `
 const FilterCont = styled.div`
     align-self: flex-start;
     position: relative;
     width: 59%;
+    min-width: 280px;
 `
 const FilterBox = styled.div`
     width: 100%;
@@ -55,10 +56,10 @@ const FilterBox = styled.div`
     border-radius: 8px;
     border: none;
     padding: 2em 3.1em;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: ${({theme}) => theme.boxShadow};
     margin: 0;
     background: ${({theme}) => theme.background};
-
+    
     p {
         text-align: left;
         font-size: 1.5rem;
@@ -82,7 +83,7 @@ const DropDownBox = styled.div`
     overflow: hidden;
     background-color: ${({theme}) => theme.background};
     border-radius: 8px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: ${({theme}) => theme.boxShadow};
 
 
     p {
@@ -103,11 +104,13 @@ const Button = styled.button`
     transform: translate(-9%, -50%);
     border: none;
     cursor: pointer;
+    color: ${({theme}) => theme.text};
 `
 const ArrowButton = styled(Button)`
     left: 90%;
     transform: translate(-87%, -50%);
     padding: .3em;
+    color: ${({theme}) => theme.text};
 `
 
 export default function InputFilter({handleClick, handleInput}) {

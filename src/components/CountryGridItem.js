@@ -10,17 +10,27 @@ const DivWrapper = styled.div`
     color: ${({theme}) => theme.text};
     background-color: ${({theme}) => theme.background};
     overflow: hidden;
+    @media (min-width: 700px) {
+      grid-template-rows: repeat(2, 10.5rem);
+    }
   
     h2 {
         margin-bottom: .9em;
         font-size: 2.1rem;
         font-weight: var(--fwl);
+        @media (min-width: 700px) {
+          font-size: 1.1rem;
+          margin-bottom: .7em;
+        }
       }
 
       p {
         font-size: 1.7rem;
         font-weight: var(--fwm);
         margin-bottom: .25em;
+        @media (min-width: 700px) {
+          font-size: .9rem;
+        }
       }
 
       .country-grid-item__flag{
@@ -33,6 +43,9 @@ const DivWrapper = styled.div`
         text-align: left;
         padding: 2.1em 0 0 3.2em;
         background-color: ${({theme}) => theme.body};
+        @media (min-width: 700px) {
+          padding: 1em 1.6em;
+        }
       }
 `
 

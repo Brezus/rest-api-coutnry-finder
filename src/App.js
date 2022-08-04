@@ -21,6 +21,9 @@ const AppCont = styled.div`
     flex-direction: column;
     gap: 3em;
     background-color: ${({theme}) => theme.background};
+    color: ${({ theme }) => theme.text};
+    font-family: 'Nunito Sans', sans-serif;
+    min-height: 100vh;
   ` 
   
 function App() {
@@ -33,6 +36,7 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        
             <AppCont>
               <Nav toggleTheme={toggleDarkMode} darkMode={darkMode}/>
               <Switch>

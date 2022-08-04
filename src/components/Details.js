@@ -9,7 +9,7 @@ const ArticleCont = styled.article`
     align-items: center;
     width: 92%;
     margin-inline: auto;
-    
+    padding-bottom: 6em;
 
     main {
         display: flex;
@@ -47,7 +47,11 @@ const StyledLink = styled(Link)`
     cursor: pointer;
     border-radius: 2px;
 `
-
+const BorderDiv = styled.div`
+    display: flex;
+    gap: 1em;
+    flexWrap: wrap;
+`
 export default function Details({info, borderC}) {
     console.log(info)
     const flagDpStyles = {
@@ -90,9 +94,9 @@ export default function Details({info, borderC}) {
                     <li>Languages: {languages}</li>
                 </ul>
                 <h2>Border Countries:</h2>
-                <div style={{display: 'flex', gap: '1em', flexWrap: 'wrap'}}>
+                <BorderDiv>
                     {borders ? borders: 'No borders'}
-                </div>
+                </BorderDiv>
             </main></ArticleCont>
     )
 }

@@ -5,7 +5,20 @@ import styled from 'styled-components'
 import InputFilter from "./InputFilter";
 
 const MainCont = styled.main`
-    background: ${({theme}) => theme.background}
+    background: ${({theme}) => theme.background};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+    width: 91%;
+    margin-inline: auto;
+    @media (min-width: 700px) {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240.8px, 1fr));
+        grid-auto-rows: auto;
+        grid-row-gap: 4.6em;
+        grid-column-gap: 5em;
+      }
 `
 
 const LoaderDiv = styled.div`
@@ -56,7 +69,7 @@ export default function Main() {
     return(
         <div>
             <InputFilter handleClick={handleRegionChange} handleInput={handleInput}/>
-            {isLoading ? <LoaderDiv></LoaderDiv> : <MainCont className="main-cont">{gridDataComponents}</MainCont>}
+            {isLoading ? <LoaderDiv></LoaderDiv> : <MainCont >{gridDataComponents}</MainCont>}
         </div>
         )
 }
