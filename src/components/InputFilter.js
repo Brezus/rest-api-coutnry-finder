@@ -14,19 +14,20 @@ const HeaderCont = styled.header`
     width: 92%;
     margin-inline: auto;
     padding: 0rem 0 3.8rem 0;
+    @media (min-width: 700px) {
+        flex-direction: row;
+    }
 `
 
 const InputCont = styled.div`
     position: relative;
-
-    i {
-        font-size: 3rem;
+    @media (min-width: 700px) {
+        width: 60%;
     }
 `
 const InputBox = styled.input`
     padding: 2.3em;
     width: 100%;
-    height: 100%;
     margin-inline: auto;
     border-radius: 8px;
     border: none;
@@ -41,6 +42,13 @@ const InputBox = styled.input`
     }
     background-color: ${({theme}) => theme.background};
     color: ${({theme}) => theme.text};
+    @media (min-width: 700px) {
+        padding: 1em 0 1em 4.6em;
+        ::placeholder {
+            font-size: .8rem;
+        }
+        
+    }
 
 `
 const FilterCont = styled.div`
@@ -51,7 +59,6 @@ const FilterCont = styled.div`
 `
 const FilterBox = styled.div`
     width: 100%;
-    height: 100%;
     margin-inline: auto;
     border-radius: 8px;
     border: none;
@@ -59,11 +66,17 @@ const FilterBox = styled.div`
     box-shadow: ${({theme}) => theme.boxShadow};
     margin: 0;
     background: ${({theme}) => theme.background};
+    @media (min-width: 700px) {
+        padding: 1em 0 1em 4.6em;
+    }
     
     p {
         text-align: left;
         font-size: 1.5rem;
         font-weight: 600;
+        @media (min-width: 700px) {
+            font-size: .8rem;
+        }
     }
 `
 
@@ -95,6 +108,14 @@ const DropDownBox = styled.div`
     }
 `
 
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+    font-size: 2rem;
+    @media (min-width: 700px) {
+        font-size: 1rem;
+        margin-left: -1em;
+    }
+`
+
 const Button = styled.button`
     position: absolute;
     content: '';
@@ -105,6 +126,8 @@ const Button = styled.button`
     border: none;
     cursor: pointer;
     color: ${({theme}) => theme.text};
+
+    
 `
 const ArrowButton = styled(Button)`
     left: 90%;
@@ -134,11 +157,11 @@ export default function InputFilter({handleClick, handleInput}) {
                     <InputBox placeholder="Search for a country..." onChange={(e) => {
                         handleInput(e)
                     }}></InputBox>
-                    <Button><FontAwesomeIcon style={{fontSize: '2rem'}} icon={faMagnifyingGlass}/></Button>
+                    <Button><StyledFontAwesomeIcon icon={faMagnifyingGlass}/></Button>
                 </InputCont>
                 <FilterCont>
                     <FilterBox><p>Filter by Region</p></FilterBox>
-                    <ArrowButton><FontAwesomeIcon onClick={setOpen} style={arrowBtnStyles} icon={faAngleDown} /></ArrowButton>
+                    <ArrowButton><FontAwesomeIcon onClick={setOpen} icon={faAngleDown} /></ArrowButton>
                     <DropDownBox open={open}>
                         {dropDownPEl}
                     </DropDownBox>
