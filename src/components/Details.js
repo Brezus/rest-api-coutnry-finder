@@ -1,102 +1,142 @@
-import React from "react";
+import React from "react"
 import { Link } from "react-router-dom"
-import styled from 'styled-components'
-import BackButton from "./BackButton";
+import styled from "styled-components"
+import BackButton from "./BackButton"
 
 const ArticleCont = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 92%;
+  margin-inline: auto;
+  padding-top: 2em;
+  padding-bottom: 6em;
+  @media (min-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px auto;
+    grid-column-gap: 10vw;
+    padding: 0;
+  }
+  @media (min-width: 1000px) {
+    grid-column-gap: 11em;
+    grid-row-gap: 3.9em;
+  }
+
+  main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 92%;
-    margin-inline: auto;
-    padding-bottom: 6em;
-
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        align-self: start;
-        gap: 1em;
-
-        h2 {
-            font-size: 1.6rem;
-        }
+    align-items: start;
+    align-self: start;
+    gap: 1em;
+    @media (min-width: 700px) {
+      grid-row: 2;
+      grid-column: 2;
+      flex-wrap: wrap;
+      flex-direction: row;
+      text-align: left;
+      grid-column-gap: 5em;
     }
-    ul {
-        list-style: none;
-        text-align: left;
-        padding-left: 0;
-        display: flex;
-        flex-direction: column;
-        gap: .8em;
-        font-weight: 800;
-    } 
-    ul + ul {
-        margin-bottom: 2em;
+
+    h2 {
+      font-size: 1.6rem;
+      width: 100%;
     }
-    
+  }
+  ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    font-weight: 800;
+    width: 30%;
+    @media (min-width: 700px) {
+      font-size: 0.8rem;
+      width: 50%;
+    }
+  }
+  ul + ul {
+    margin-bottom: 2em;
+    @media (min-width: 700px) {
+      margin-bottom: 0em;
+    }
+  }
+`
+
+const FlagDiv = styled.div`
+  background-size: cover;
+  background-position: center;
+  height: 278px;
+  width: 100%;
+  margin-bottom: 3rem;
+  grid-row: 2;
+  grid-column: 1;
+  @media (min-width: 700px) {
+    height: 100%;
+    max-height: 400px;
+  }
 `
 
 const StyledLink = styled(Link)`
-    text-decoration: none;
-    padding: .5em 1em;
-    gap: .5em;
-    color: ${({theme}) => theme.text};
-    background-color: ${({theme}) => theme.body};
-    box-shadow: ${({theme}) => theme.boxShadow};
-    cursor: pointer;
-    border-radius: 2px;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  gap: 0.5em;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.body};
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  cursor: pointer;
+  border-radius: 2px;
 `
 const BorderDiv = styled.div`
-    display: flex;
-    gap: 1em;
-    flexWrap: wrap;
+  display: flex;
+  gap: 1em;
+  flexwrap: wrap;
 `
-export default function Details({info, borderC}) {
-    console.log(info)
-    const flagDpStyles = {
-        backgroundImage: `url(${info.flags?.svg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '278px',
-        width: '100%',
-        marginBottom: '3rem'
-    }
-    const LinkStyles = {
-        padding: '0.5em 1em',
-        gap: '0.5em',
-        TextDecoration: 'none'
-    }
+export default function Details({ info, borderC }) {
+  const LinkStyles = {
+    padding: "0.5em 1em",
+    gap: "0.5em",
+    TextDecoration: "none",
+  }
 
-    const borders = info.borders?.map((border, i) => <StyledLink key={i} to={borderC ? `/border-country/${border}` : `/${border}`}>{border}</StyledLink>)
-    const languages = info.languages && Object.values(info.languages).join(', ')
-    const currency = info.currencies && Object.values(info.currencies)[0].name
-    const nativeName = info.name && Object.values(info.name.nativeName)[0].official
-    const population = info.population?.toString()
-    const topLevelDomain = info.tld?.[0]
-    
-    return (
-        <ArticleCont>
-            <BackButton />
-            <div style={flagDpStyles}></div>
-            <main>
-                <h2>{info.name?.common}</h2>
-                <ul>
-                    <li>Native Name: {nativeName}</li>
-                    <li>Population: {population}</li>
-                    <li>Region: {info.region}</li>
-                    <li>Sub Region: {info.subregion}</li>
-                    <li>Capital: {info.capital}</li>
-                </ul>
-                <ul>
-                    <li>Top Level Domain: {topLevelDomain}</li>
-                    <li>Currencies: {currency}</li>
-                    <li>Languages: {languages}</li>
-                </ul>
-                <h2>Border Countries:</h2>
-                <BorderDiv>
-                    {borders ? borders: 'No borders'}
-                </BorderDiv>
-            </main></ArticleCont>
-    )
+  const borders = info.borders?.map((border, i) => (
+    <StyledLink
+      key={i}
+      to={borderC ? `/border-country/${border}` : `/${border}`}
+    >
+      {border}
+    </StyledLink>
+  ))
+  const languages = info.languages && Object.values(info.languages).join(", ")
+  const currency = info.currencies && Object.values(info.currencies)[0].name
+  const nativeName =
+    info.name && Object.values(info.name.nativeName)[0].official
+  const population = info.population?.toString()
+  const topLevelDomain = info.tld?.[0]
+
+  return (
+    <ArticleCont>
+      <BackButton />
+      <FlagDiv style={{ backgroundImage: `url(${info.flags?.svg})` }}></FlagDiv>
+      <main>
+        <h2>{info.name?.common}</h2>
+        <ul>
+          <li>Native Name: {nativeName}</li>
+          <li>Population: {population}</li>
+          <li>Region: {info.region}</li>
+          <li>Sub Region: {info.subregion}</li>
+          <li>Capital: {info.capital}</li>
+        </ul>
+        <ul>
+          <li>Top Level Domain: {topLevelDomain}</li>
+          <li>Currencies: {currency}</li>
+          <li>Languages: {languages}</li>
+        </ul>
+        <h2>Border Countries:</h2>
+        <BorderDiv>{borders ? borders : "No borders"}</BorderDiv>
+      </main>
+    </ArticleCont>
+  )
 }
