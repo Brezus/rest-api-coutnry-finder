@@ -12,6 +12,7 @@ const DivWrapper = styled.div`
   overflow: hidden;
   @media (min-width: 700px) {
     grid-template-rows: repeat(2, 10.5rem);
+    max-width: 22.5rem;
   }
 
   h2 {

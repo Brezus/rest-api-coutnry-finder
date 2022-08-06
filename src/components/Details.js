@@ -22,6 +22,11 @@ const ArticleCont = styled.article`
     grid-column-gap: 11em;
     grid-row-gap: 3.9em;
   }
+  @media (min-width: 1100px) {
+    grid-template-columns: 1.2fr 1.3fr;
+    grid-column-gap: 8.5em;
+    align-items: center;
+  }
 
   main {
     display: flex;
@@ -29,13 +34,26 @@ const ArticleCont = styled.article`
     align-items: start;
     align-self: start;
     gap: 1em;
+    text-align: left;
     @media (min-width: 700px) {
       grid-row: 2;
       grid-column: 2;
       flex-wrap: wrap;
       flex-direction: row;
-      text-align: left;
+      text-align: center;
+      justify-content: center;
       grid-column-gap: 5em;
+      padding-top: 3.2em;
+    }
+    @media (min-width: 1100px) {
+      grid-row: 2;
+      grid-column: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 50px auto auto;
+      text-align: left;
+      padding-top: 0em;
+      align-self: center;
     }
 
     h2 {
@@ -51,10 +69,15 @@ const ArticleCont = styled.article`
     flex-direction: column;
     gap: 0.8em;
     font-weight: 800;
-    width: 30%;
     @media (min-width: 700px) {
       font-size: 0.8rem;
       width: 50%;
+      text-align: center;
+    }
+    @media (min-width: 1100px) {
+      width: 100%;
+      grid-row: 2;
+      text-align: left;
     }
   }
   ul + ul {
@@ -64,7 +87,23 @@ const ArticleCont = styled.article`
     }
   }
 `
-
+const H2Styled = styled.h2`
+  width: 100%;
+  @media (min-width: 1100px) {
+    width: auto;
+  }
+`
+const BorderCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  grid-row: 3;
+  grid-column: 1/-1;
+  flex-wrap: wrap;
+  @media (min-width: 1100px) {
+    flex-direction: row;
+  }
+`
 const FlagDiv = styled.div`
   background-size: cover;
   background-position: center;
@@ -73,9 +112,10 @@ const FlagDiv = styled.div`
   margin-bottom: 3rem;
   grid-row: 2;
   grid-column: 1;
-  @media (min-width: 700px) {
-    height: 100%;
-    max-height: 400px;
+
+  @media (min-width: 1100px) {
+    margin-bottom: 0rem;
+    height: 400px;
   }
 `
 
@@ -92,7 +132,8 @@ const StyledLink = styled(Link)`
 const BorderDiv = styled.div`
   display: flex;
   gap: 1em;
-  flexwrap: wrap;
+  flex-wrap: wrap;
+  max-width: 100%;
 `
 export default function Details({ info, borderC }) {
   const LinkStyles = {
@@ -113,7 +154,7 @@ export default function Details({ info, borderC }) {
   const currency = info.currencies && Object.values(info.currencies)[0].name
   const nativeName =
     info.name && Object.values(info.name.nativeName)[0].official
-  const population = info.population?.toString()
+  const population = info.population?.toLocaleString()
   const topLevelDomain = info.tld?.[0]
 
   return (
@@ -134,8 +175,10 @@ export default function Details({ info, borderC }) {
           <li>Currencies: {currency}</li>
           <li>Languages: {languages}</li>
         </ul>
-        <h2>Border Countries:</h2>
-        <BorderDiv>{borders ? borders : "No borders"}</BorderDiv>
+        <BorderCont>
+          <H2Styled>Border Countries:</H2Styled>
+          <BorderDiv>{borders ? borders : "No borders"}</BorderDiv>
+        </BorderCont>
       </main>
     </ArticleCont>
   )
