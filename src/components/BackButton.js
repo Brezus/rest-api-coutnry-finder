@@ -21,6 +21,7 @@ const Button = styled.button`
   grid-row: 1;
   max-width: 150px;
 `
+
 export default function BackButton() {
   let history = useHistory()
   return (

@@ -18,6 +18,7 @@ const MainCont = styled.main`
     grid-auto-rows: auto;
     grid-row-gap: 4.6em;
     grid-column-gap: 5em;
+    width: 88%;
   }
 `
 

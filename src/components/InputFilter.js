@@ -16,6 +16,11 @@ const HeaderCont = styled.header`
   padding: 0rem 0 3.8rem 0;
   @media (min-width: 700px) {
     flex-direction: row;
+    justify-content: space-between;
+    width: 88%;
+  }
+  @media (min-width: 1100px) {
+    padding: 0rem 0 2.8rem 0;
   }
 `
 
@@ -23,6 +28,9 @@ const InputCont = styled.div`
   position: relative;
   @media (min-width: 700px) {
     width: 60%;
+  }
+  @media (min-width: 1100px) {
+    width: 38%;
   }
 `
 const InputBox = styled.input`
@@ -33,6 +41,8 @@ const InputBox = styled.input`
   border: none;
   padding-left: 9.4rem;
   padding-top: 2.4rem;
+  background-color: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
   box-shadow: ${({ theme }) => theme.boxShadow};
   ::placeholder {
     opacity: 0.7;
@@ -40,8 +50,6 @@ const InputBox = styled.input`
     font-weight: 600;
     color: ${({ theme }) => theme.text};
   }
-  background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.text};
   @media (min-width: 700px) {
     padding: 1em 0 1em 4.6em;
     ::placeholder {
@@ -54,6 +62,9 @@ const FilterCont = styled.div`
   position: relative;
   width: 59%;
   min-width: 280px;
+  @media (min-width: 700px) {
+    width: 23%;
+  }
 `
 const FilterBox = styled.div`
   width: 100%;
@@ -63,12 +74,14 @@ const FilterBox = styled.div`
   padding: 2em 3.1em;
   box-shadow: ${({ theme }) => theme.boxShadow};
   margin: 0;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.body};
   @media (min-width: 700px) {
-    padding: 1em 0 1em 4.6em;
+    padding: 1.15em 0 1.15em 4.6em;
+  }
+  @media (min-width: 1100px) {
   }
 
-  p {
+  .filter-p {
     text-align: left;
     font-size: 1.5rem;
     font-weight: 600;
@@ -92,7 +105,7 @@ const DropDownBox = styled.div`
   opacity: ${(props) => (props.open ? "1" : "0")};
   transition: width 0.2s ease;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.body};
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.boxShadow};
 
@@ -107,28 +120,28 @@ const DropDownBox = styled.div`
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 2rem;
+  position: absolute;
+  content: "";
+  left: 9%;
+  top: 50%;
+  transform: translate(-9%, -50%);
+  color: ${({ theme }) => theme.text};
   @media (min-width: 700px) {
     font-size: 1rem;
     margin-left: -1em;
   }
 `
-
-const Button = styled.button`
-  position: absolute;
-  content: "";
-  left: 9%;
-  top: 50%;
-  background-color: transparent;
-  transform: translate(-9%, -50%);
-  border: none;
-  cursor: pointer;
-  color: ${({ theme }) => theme.text};
-`
-const ArrowButton = styled(Button)`
+const ArrowButton = styled.button`
+  font-size: 2rem;
   left: 90%;
   transform: translate(-87%, -50%);
-  padding: 0.3em;
+  position: absolute;
+  content: "";
+  top: 50%;
+  background-color: transparent;
   color: ${({ theme }) => theme.text};
+  border: none;
+  cursor: pointer;
 `
 
 export default function InputFilter({ handleClick, handleInput }) {
@@ -152,6 +165,7 @@ export default function InputFilter({ handleClick, handleInput }) {
     transform: `${!open ? "rotate(90deg)" : ""}`,
     transition: "transform 0.2s ease",
     fontSize: "1rem",
+    padding: ".4em",
   }
   return (
     <HeaderCont>
@@ -162,16 +176,18 @@ export default function InputFilter({ handleClick, handleInput }) {
             handleInput(e)
           }}
         ></InputBox>
-        <Button>
-          <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
-        </Button>
+        <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
       </InputCont>
       <FilterCont>
-        <FilterBox>
-          <p>Filter by Region</p>
+        <FilterBox tabIndex={0}>
+          <p className="filter-p">Filter by Region</p>
         </FilterBox>
         <ArrowButton>
-          <FontAwesomeIcon onClick={setOpen} icon={faAngleDown} />
+          <FontAwesomeIcon
+            style={arrowBtnStyles}
+            onClick={setOpen}
+            icon={faAngleDown}
+          />
         </ArrowButton>
         <DropDownBox open={open}>{dropDownPEl}</DropDownBox>
       </FilterCont>

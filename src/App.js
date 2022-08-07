@@ -5,10 +5,9 @@ import { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "./components/Themes"
 import styled from "styled-components"
 import useToggle from "./hooks/useToggle"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { HashRouter as Router, Switch, Route } from "react-router-dom"
 import CountryDetails from "./components/CountryDetails"
 import { useEffect } from "react"
-import CDetails2 from "./components/CDetails2"
 
 const AppCont = styled.div`
   text-align: center;
@@ -42,9 +41,6 @@ function App() {
             </Route>
             <Route exact path="/:countryName">
               <CountryDetails />
-            </Route>
-            <Route path="/border-country/:countryCode">
-              <CDetails2 />
             </Route>
           </Switch>
         </AppCont>

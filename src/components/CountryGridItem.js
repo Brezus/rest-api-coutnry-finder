@@ -54,6 +54,7 @@ export default function CountryGridItem({ data }) {
   const { allData, visible } = data
   const linkStyles = {
     width: "100%",
+    maxWidth: "22.5rem",
     marginInline: "auto",
     justifyContent: "center",
     display: `${!visible ? "none" : "flex"}`,

@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import BackButton from "./BackButton"
+import BorderButton from "./BorderButton"
 
 const ArticleCont = styled.article`
   display: flex;
@@ -40,8 +41,6 @@ const ArticleCont = styled.article`
       grid-column: 2;
       flex-wrap: wrap;
       flex-direction: row;
-      text-align: center;
-      justify-content: center;
       grid-column-gap: 5em;
       padding-top: 3.2em;
     }
@@ -63,7 +62,6 @@ const ArticleCont = styled.article`
   }
   ul {
     list-style: none;
-    text-align: left;
     padding-left: 0;
     display: flex;
     flex-direction: column;
@@ -72,7 +70,6 @@ const ArticleCont = styled.article`
     @media (min-width: 700px) {
       font-size: 0.8rem;
       width: 50%;
-      text-align: center;
     }
     @media (min-width: 1100px) {
       width: 100%;
@@ -119,36 +116,15 @@ const FlagDiv = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  padding: 0.5em 1em;
-  gap: 0.5em;
-  color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.body};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  cursor: pointer;
-  border-radius: 2px;
-`
 const BorderDiv = styled.div`
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
   max-width: 100%;
 `
-export default function Details({ info, borderC }) {
-  const LinkStyles = {
-    padding: "0.5em 1em",
-    gap: "0.5em",
-    TextDecoration: "none",
-  }
-
+export default function Details({ info }) {
   const borders = info.borders?.map((border, i) => (
-    <StyledLink
-      key={i}
-      to={borderC ? `/border-country/${border}` : `/${border}`}
-    >
-      {border}
-    </StyledLink>
+    <BorderButton key={i} to={`/${border}`} borderCode={border} />
   ))
   const languages = info.languages && Object.values(info.languages).join(", ")
   const currency = info.currencies && Object.values(info.currencies)[0].name
