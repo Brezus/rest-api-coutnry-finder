@@ -9,6 +9,7 @@ const DivWrapper = styled.div`
   border-radius: 9px;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.background};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   overflow: hidden;
   @media (min-width: 700px) {
     grid-template-rows: repeat(2, 10.5rem);

@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import styled from "styled-components"
 import BackButton from "./BackButton"
 import BorderButton from "./BorderButton"
@@ -21,12 +20,15 @@ const ArticleCont = styled.article`
   }
   @media (min-width: 1000px) {
     grid-column-gap: 11em;
-    grid-row-gap: 3.9em;
+    grid-row-gap: 1.9em;
   }
   @media (min-width: 1100px) {
     grid-template-columns: 1.2fr 1.3fr;
     grid-column-gap: 8.5em;
     align-items: center;
+  }
+  @media (min-width: 1440px) {
+    grid-row-gap: 3.9em;
   }
 
   main {
@@ -87,7 +89,8 @@ const ArticleCont = styled.article`
 const H2Styled = styled.h2`
   width: 100%;
   @media (min-width: 1100px) {
-    width: auto;
+    width: auto !important;
+    margin-right: 1em;
   }
 `
 const BorderCont = styled.div`
@@ -124,7 +127,7 @@ const BorderDiv = styled.div`
 `
 export default function Details({ info }) {
   const borders = info.borders?.map((border, i) => (
-    <BorderButton key={i} to={`/${border}`} borderCode={border} />
+    <BorderButton key={i} borderCode={border} />
   ))
   const languages = info.languages && Object.values(info.languages).join(", ")
   const currency = info.currencies && Object.values(info.currencies)[0].name
