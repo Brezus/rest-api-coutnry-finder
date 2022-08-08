@@ -38,12 +38,13 @@ const ThemeCont = styled.div`
   display: flex;
   gap: 1em;
   align-items: center;
+  cursor: pointer;
 `
 
 export default function Nav({ toggleTheme, darkMode }) {
   const themeDiv = (
-    <ThemeCont>
-      <FontAwesomeIcon onClick={toggleTheme} icon={darkMode ? faSun : faMoon} />
+    <ThemeCont onClick={toggleTheme}>
+      <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
       <p className="nav-para">Dark Mode</p>
     </ThemeCont>
   )

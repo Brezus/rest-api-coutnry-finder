@@ -105,6 +105,7 @@ const BorderCont = styled.div`
   flex-wrap: wrap;
   @media (min-width: 1100px) {
     flex-direction: row;
+    align-items: center;
   }
 `
 const FlagDiv = styled.div`

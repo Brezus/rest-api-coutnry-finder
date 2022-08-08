@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import useToggle from "../hooks/useToggle"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -75,6 +75,7 @@ const FilterBox = styled.div`
   border-radius: 8px;
   border: none;
   padding: 2em 3.1em;
+  cursor: pointer;
   box-shadow: ${({ theme }) => theme.boxShadow};
   margin: 0;
   background: ${({ theme }) => theme.body};
@@ -134,17 +135,11 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
     margin-left: -1em;
   }
 `
-const ArrowButton = styled.button`
-  font-size: 2rem;
+
+const StyledDropDownIcon = styled(StyledFontAwesomeIcon)`
   left: 90%;
-  transform: translate(-87%, -50%);
-  position: absolute;
-  content: "";
-  top: 50%;
-  background-color: transparent;
-  color: ${({ theme }) => theme.text};
-  border: none;
-  cursor: pointer;
+  top: 20%;
+  transform: translate(-90%, -20%);
 `
 
 export default function InputFilter({ handleClick, handleInput }) {
@@ -182,16 +177,10 @@ export default function InputFilter({ handleClick, handleInput }) {
         <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
       </InputCont>
       <FilterCont>
-        <FilterBox tabIndex={0}>
+        <FilterBox onClick={setOpen} tabIndex={0}>
           <p className="filter-p">Filter by Region</p>
         </FilterBox>
-        <ArrowButton>
-          <FontAwesomeIcon
-            style={arrowBtnStyles}
-            onClick={setOpen}
-            icon={faAngleDown}
-          />
-        </ArrowButton>
+        <StyledDropDownIcon style={arrowBtnStyles} icon={faAngleDown} />
         <DropDownBox open={open}>{dropDownPEl}</DropDownBox>
       </FilterCont>
     </HeaderCont>

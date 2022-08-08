@@ -61,10 +61,7 @@ export default function CountryGridItem({ data }) {
     display: `${!visible ? "none" : "flex"}`,
     textDecoration: "none",
   }
-  const gridItemParams = {
-    pathname: `/${allData.cca3}`,
-    state: { countriesInfo: allData },
-  }
+
   return (
     <Link to={`/${allData.name.common}`} style={linkStyles}>
       <DivWrapper>
