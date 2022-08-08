@@ -6,7 +6,7 @@ export default function CountryDetails() {
   const [cData, setCData] = useState({})
   const { countryName } = useParams()
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+    fetch(`https://restcountries.com/v3.1/name/${countryName.trim()}`)
       .then((res) => res.json())
       .then((data) => {
         setCData(data[0])

@@ -23,5 +23,5 @@ export default function BorderButton({ border }) {
       })
   }, [border])
 
-  return <StyledLink to={`/${borderName}`}>{borderName}</StyledLink>
+  return <StyledLink to={`/${borderName.trim()}`}>{borderName}</StyledLink>
 }
