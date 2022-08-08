@@ -165,7 +165,7 @@ export default function InputFilter({ handleClick, handleInput }) {
     </p>
   ))
   const arrowBtnStyles = {
-    transform: `${!open ? "rotate(90deg)" : ""}`,
+    transform: `${!open ? "rotate(90deg)" : "rotate(0deg)"}`,
     transition: "transform 0.2s ease",
     fontSize: "1rem",
     padding: ".4em",
