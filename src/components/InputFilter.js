@@ -12,7 +12,8 @@ const HeaderCont = styled.header`
   flex-direction: column;
   gap: 5em;
   width: 92%;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0rem 0 3.8rem 0;
   @media (min-width: 700px) {
     flex-direction: row;
@@ -36,7 +37,8 @@ const InputCont = styled.div`
 const InputBox = styled.input`
   padding: 2.3em;
   width: 100%;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 8px;
   border: none;
   padding-left: 9.4rem;
@@ -68,7 +70,8 @@ const FilterCont = styled.div`
 `
 const FilterBox = styled.div`
   width: 100%;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 8px;
   border: none;
   padding: 2em 3.1em;

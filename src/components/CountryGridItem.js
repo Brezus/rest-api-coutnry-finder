@@ -6,6 +6,7 @@ const DivWrapper = styled.div`
   display: grid;
   grid-template-rows: repeat(2, 21rem);
   width: 100%;
+  margin
   border-radius: 9px;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.background};
@@ -56,7 +57,8 @@ export default function CountryGridItem({ data }) {
   const linkStyles = {
     width: "100%",
     maxWidth: "22.5rem",
-    marginInline: "auto",
+    marginLeft: "auto",
+    marginRight: "auto",
     justifyContent: "center",
     display: `${!visible ? "none" : "flex"}`,
     textDecoration: "none",

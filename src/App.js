@@ -13,12 +13,16 @@ const AppCont = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 3em;
+  gap: 2em;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
   font-family: "Nunito Sans", sans-serif;
   min-height: 100vh;
-  padding-bottom: 4em;
+  padding-bottom: 2em;
+  @media (min-width: 1440px) {
+    gap: 3em;
+    padding-bottom: 4em;
+  }
 `
 
 function App() {

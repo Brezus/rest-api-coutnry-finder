@@ -25,7 +25,8 @@ const StyledLink = styled(Link)`
 `
 const Div = styled.div`
   width: 92%;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: space-between;
   @media (min-width: 700px) {

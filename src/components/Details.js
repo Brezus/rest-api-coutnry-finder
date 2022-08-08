@@ -2,13 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import BackButton from "./BackButton"
 import BorderButton from "./BorderButton"
+import { nanoid } from "nanoid"
 
 const ArticleCont = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 92%;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 2em;
   padding-bottom: 6em;
   @media (min-width: 700px) {
@@ -86,6 +88,7 @@ const ArticleCont = styled.article`
     }
   }
 `
+
 const H2Styled = styled.h2`
   width: 100%;
   @media (min-width: 1100px) {
@@ -127,7 +130,7 @@ const BorderDiv = styled.div`
 `
 export default function Details({ info }) {
   const borders = info.borders?.map((border, i) => (
-    <BorderButton key={i} borderCode={border} />
+    <BorderButton key={nanoid()} borderCode={border} />
   ))
   const languages = info.languages && Object.values(info.languages).join(", ")
   const currency = info.currencies && Object.values(info.currencies)[0].name

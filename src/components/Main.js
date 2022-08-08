@@ -11,7 +11,8 @@ const MainCont = styled.main`
   align-items: center;
   gap: 5em;
   width: 91%;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   @media (min-width: 700px) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240.8px, 1fr));
