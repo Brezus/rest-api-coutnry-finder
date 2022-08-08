@@ -13,15 +13,15 @@ const StyledLink = styled(Link)`
   border-radius: 2px;
 `
 
-export default function BorderButton({ borderCode }) {
+export default function BorderButton({ border }) {
   const [borderName, setBorderName] = useState("")
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/alpha/${borderCode}`)
+    fetch(`https://restcountries.com/v3.1/alpha/${border}`)
       .then((res) => res.json())
       .then((data) => {
         setBorderName(data[0].name.common)
       })
-  }, [borderCode])
+  }, [border])
 
-  return <StyledLink to={`/${borderCode}`}>{borderName}</StyledLink>
+  return <StyledLink to={`/${borderName}`}>{borderName}</StyledLink>
 }

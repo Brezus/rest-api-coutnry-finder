@@ -6,7 +6,6 @@ const DivWrapper = styled.div`
   display: grid;
   grid-template-rows: repeat(2, 21rem);
   width: 100%;
-  margin
   border-radius: 9px;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.background};
@@ -51,7 +50,6 @@ const DivWrapper = styled.div`
     }
   }
 `
-
 export default function CountryGridItem({ data }) {
   const { allData, visible } = data
   const linkStyles = {
@@ -68,7 +66,7 @@ export default function CountryGridItem({ data }) {
     state: { countriesInfo: allData },
   }
   return (
-    <Link to={`/${allData.cca3}`} style={linkStyles}>
+    <Link to={`/${allData.name.common}`} style={linkStyles}>
       <DivWrapper>
         <div
           className="country-grid-item__flag"

@@ -130,7 +130,7 @@ const BorderDiv = styled.div`
 `
 export default function Details({ info }) {
   const borders = info.borders?.map((border, i) => (
-    <BorderButton key={nanoid()} borderCode={border} />
+    <BorderButton key={nanoid()} border={border} />
   ))
   const languages = info.languages && Object.values(info.languages).join(", ")
   const currency = info.currencies && Object.values(info.currencies)[0].name
