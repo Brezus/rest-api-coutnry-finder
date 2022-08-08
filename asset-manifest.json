@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/rest-api-coutnry-finder/static/css/main.e53070ec.css",
-    "main.js": "/rest-api-coutnry-finder/static/js/main.6b2aeeef.js",
+    "main.js": "/rest-api-coutnry-finder/static/js/main.dc5ce005.js",
     "index.html": "/rest-api-coutnry-finder/index.html",
     "main.e53070ec.css.map": "/rest-api-coutnry-finder/static/css/main.e53070ec.css.map",
-    "main.6b2aeeef.js.map": "/rest-api-coutnry-finder/static/js/main.6b2aeeef.js.map"
+    "main.dc5ce005.js.map": "/rest-api-coutnry-finder/static/js/main.dc5ce005.js.map"
   },
   "entrypoints": [
     "static/css/main.e53070ec.css",
-    "static/js/main.6b2aeeef.js"
+    "static/js/main.dc5ce005.js"
   ]
 }
