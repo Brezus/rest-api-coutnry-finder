@@ -63,7 +63,7 @@ export default function CountryGridItem({ data }) {
   }
 
   return (
-    <Link to={`/${allData.name.common.trim()}`} style={linkStyles}>
+    <Link to={`/${allData.name.common.replace(/ /g, "")}`} style={linkStyles}>
       <DivWrapper>
         <div
           className="country-grid-item__flag"
