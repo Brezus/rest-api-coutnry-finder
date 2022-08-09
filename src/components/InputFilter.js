@@ -64,6 +64,7 @@ const FilterCont = styled.div`
   position: relative;
   width: 59%;
   min-width: 280px;
+  cursor: pointer;
   @media (min-width: 700px) {
     width: 23%;
   }
@@ -75,7 +76,6 @@ const FilterBox = styled.div`
   border-radius: 8px;
   border: none;
   padding: 2em 3.1em;
-  cursor: pointer;
   box-shadow: ${({ theme }) => theme.boxShadow};
   margin: 0;
   background: ${({ theme }) => theme.body};
@@ -114,7 +114,6 @@ const DropDownBox = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow};
 
   p {
-    font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
     width: 100%;
@@ -176,8 +175,8 @@ export default function InputFilter({ handleClick, handleInput }) {
         ></InputBox>
         <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
       </InputCont>
-      <FilterCont>
-        <FilterBox onClick={setOpen} tabIndex={0}>
+      <FilterCont onClick={setOpen}>
+        <FilterBox tabIndex={0}>
           <p className="filter-p">Filter by Region</p>
         </FilterBox>
         <StyledDropDownIcon style={arrowBtnStyles} icon={faAngleDown} />
